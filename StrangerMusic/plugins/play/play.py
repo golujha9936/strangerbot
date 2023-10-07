@@ -55,7 +55,7 @@ async def play_commnd(
           if message.from_user.id not in SUDOERS:
                   admins = adminlist.get(message.chat.id)
                   if not admins:
-                      return await message.reply_text(_["admin_18"])
+                    return await message.reply_text(_["admin_18"])
                   else:
                       if message.from_user.id not in admins:
                           return await message.reply_text(_["admin_19"])
@@ -190,7 +190,6 @@ async def play_commnd(
                         message.from_user.id,
                     )
                 except Exception as e:
-                    print(e)
                     return await mystic.edit_text(_["play_3"])
                 streamtype = "playlist"
                 plist_type = "yt"
@@ -204,7 +203,6 @@ async def play_commnd(
                 try:
                     details, track_id = await YouTube.track(url)
                 except Exception as e:
-                    print(e)
                     return await mystic.edit_text(_["play_3"])
                 streamtype = "youtube"
                 img = details["thumb"]
@@ -458,7 +456,6 @@ async def play_commnd(
                 "f" if fplay else "d",
             )
             await mystic.delete()
-            print("\n\n ok \n\n")
             await message.reply_photo(
                 photo=img,
                 caption=cap,
@@ -479,7 +476,6 @@ async def play_commnd(
                     "f" if fplay else "d",
                 )
                 await mystic.delete()
-                print("\n\n slider \n\n")
                 await message.reply_photo(
                     photo=details["thumb"],
                     caption=_["play_11"].format(
@@ -500,7 +496,6 @@ async def play_commnd(
                     "f" if fplay else "d",
                 )
                 await mystic.delete()
-                print("\n\nelse part \n\n")
                 await message.reply_photo(
                     photo=img,
                     caption=cap,
