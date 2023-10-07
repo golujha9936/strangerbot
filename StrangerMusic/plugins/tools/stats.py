@@ -461,4 +461,4 @@ async def back_buttons(client, CallbackQuery, _):
                 photo=config.STATS_IMG_URL,
                 caption=_["gstats_11"].format(config.MUSIC_BOT_NAME),
                 reply_markup=upl,
-            )
+)
