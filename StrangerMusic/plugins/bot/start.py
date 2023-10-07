@@ -31,7 +31,6 @@ loop = asyncio.get_running_loop()
 @app.on_message(
     filters.command(get_command("START_COMMAND"))
     & filters.private
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @LanguageStart
@@ -41,7 +40,7 @@ async def start_comm(client, message: Message, _):
         name = message.text.split(None, 1)[1]
         if name[0:4] == "help":
             keyboard = help_pannel(_)
-            await message.reply_sticker("CAACAgUAAx0CdbIJ1QACBuhkvQUuBcqrTPTeLYARKBUDFn0RqAACPQwAAvv16FVgo7OXyFd8tC8E")
+            await message.reply_sticker("CAACAgUAAxkBAALFLWUg_wkJzNuyc5oKaHzoV3Z0VwK5AAJSBQACKtwwVLZKGa1dPv8-MAQ")
             return await message.reply_photo(
                        photo=config.START_IMG_URL,
                        caption=_["help_1"], reply_markup=keyboard
@@ -97,7 +96,6 @@ async def start_comm(client, message: Message, _):
                     None, get_stats
                 )
             except Exception as e:
-                print(e)
                 return
             thumbnail = await YouTube.thumbnail(videoid, True)
             await m.delete()
@@ -185,7 +183,7 @@ async def start_comm(client, message: Message, _):
         try:
             await app.resolve_peer(OWNER_ID[0])
             OWNER = OWNER_ID[0]
-        except:
+        except :
             OWNER = None
         out = private_panel(_, app.username, OWNER)
         if config.START_IMG_URL:
@@ -220,7 +218,6 @@ async def start_comm(client, message: Message, _):
 @app.on_message(
     filters.command(get_command("START_COMMAND"))
     & filters.group
-    & ~filters.edited
     & ~BANNED_USERS
 )
 @LanguageStart
