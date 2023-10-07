@@ -85,7 +85,7 @@ async def gen_thumb(videoid,user_id):
                     )
                     await f.write(await resp.read())
                     await f.close()
-                try: 
+        try: 
             async for photo in app.get_chat_photos(user_id,1): 
                 sp=await app.download_media(photo.file_id, file_name=f'{user_id}.jpg') 
         except: 
